@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Тихая бухта — массаж и SPA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;1,500&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef2ee;--card:#fff;--text:#203a35;--muted:#5f7570;--accent:#2f6b5f;--on-accent:#fff;--soft:#e3ece7;--display:Lora,serif;--radius:26px;--btn-radius:16px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Nunito,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+.demo{text-align:center;font-size:12px;padding:6px;background:var(--accent);color:#dfeee9}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.logo{display:flex;align-items:center;gap:10px;font-family:Lora;font-size:22px}
+.logo svg{width:34px;height:34px}
+.nav nav a{margin-left:26px;color:var(--muted);text-decoration:none;font-weight:600;font-size:15px}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;padding:15px 26px;border-radius:16px;background:var(--accent);color:#fff;font:700 15px Nunito;text-decoration:none;transition:.2s}
+.btn:hover{background:#24564c}
+.btn.light{background:#fff;color:var(--accent)}
+.hero{border-radius:36px;overflow:hidden;position:relative;min-height:560px;display:flex;align-items:flex-end;padding:56px;color:#fff;
+ background:linear-gradient(180deg,rgba(32,58,53,0) 30%,rgba(32,58,53,.75)),linear-gradient(180deg,#a7c8c0 0%,#7aa79c 45%,#3f7b6e 70%,#2f6b5f 100%)}
+.hero svg.waves{position:absolute;left:0;right:0;top:40%;width:100%}
+.sun{position:absolute;width:140px;height:140px;border-radius:50%;background:#f4e7cf;top:70px;right:16%;box-shadow:0 0 80px #f4e7cf}
+.hero .in{position:relative;max-width:620px}
+h1{font-family:Lora;font-weight:500;font-size:clamp(42px,5.6vw,72px);line-height:1.05;margin:10px 0 16px}
+h1 i{color:#cfe7df}
+.hero p{font-size:18px;opacity:.9;max-width:480px}
+.hero .actions{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+.pill{display:inline-block;background:rgba(255,255,255,.18);backdrop-filter:blur(6px);padding:6px 14px;border-radius:99px;font-size:13px;font-weight:600}
+section{padding:90px 0}
+.center{text-align:center;max-width:620px;margin:0 auto 46px}
+h2{font-family:Lora;font-weight:500;font-size:clamp(34px,4.2vw,50px);margin:10px 0;line-height:1.15}
+.center p{color:var(--muted)}
+.tag{color:var(--accent);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.14em}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.s{background:var(--card);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;gap:6px;transition:.25s}
+.s:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(32,58,53,.1)}
+.s .ic{width:52px;height:52px;border-radius:16px;background:var(--soft);display:grid;place-items:center;margin-bottom:10px}
+.s .ic svg{width:26px;height:26px;stroke:var(--accent)}
+.s h3{margin:0;font-family:Lora;font-weight:500;font-size:22px}
+.s p{margin:0;color:var(--muted);font-size:15px;flex:1}
+.s .meta{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:16px;border-top:1px solid #e6ece9}
+.s .meta b{font-size:20px}.s .meta span{color:var(--muted);font-size:13px}
+.s .btn{width:100%;justify-content:center;margin-top:14px;background:var(--soft);color:var(--accent)}
+.s .btn:hover{background:var(--accent);color:#fff}
+.certs{display:grid;grid-template-columns:1.2fr 1fr;gap:20px}
+.cert{border-radius:var(--radius);padding:44px;background:linear-gradient(135deg,#2f6b5f,#4e8d7f);color:#fff;position:relative;overflow:hidden}
+.cert::after{content:'';position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;border:30px solid rgba(255,255,255,.08)}
+.cert h3{font-family:Lora;font-weight:500;font-size:32px;margin:0 0 10px}
+.cert p{opacity:.85;margin:0 0 24px;max-width:380px}
+.steps{background:var(--card);border-radius:var(--radius);padding:36px;display:grid;gap:20px}
+.steps div{display:flex;gap:16px}
+.steps b{flex:none;width:36px;height:36px;border-radius:12px;background:var(--soft);color:var(--accent);display:grid;place-items:center}
+.steps h4{margin:0;font-size:16px}.steps p{margin:0;color:var(--muted);font-size:14px}
+footer{padding:40px 0 60px}
+.foot{background:var(--card);border-radius:var(--radius);padding:30px 36px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;font-size:15px}
+.foot b{display:block;color:var(--accent);font-size:13px;text-transform:uppercase;letter-spacing:.1em}
+@media(max-width:860px){
+ .nav nav{display:none}.hero{padding:30px;min-height:520px;border-radius:26px}
+ .grid,.certs,.foot{grid-template-columns:1fr}section{padding:60px 0}.sun{width:90px;height:90px;top:40px}
+}
+</style>
+</head>
+<!-- data-dikidi: ссылка из кода кнопки DIKIDI («Запись на определённую услугу» тоже подойдёт) -->
+<body data-dikidi="https://dikidi.net/" data-studio="«Тихую бухту»">
+<div class="demo">Демо-сайт из портфолио · студия вымышленная</div>
+<div class="wrap">
+<div class="nav">
+ <span class="logo"><svg viewBox="0 0 34 34" fill="none" stroke="#2f6b5f" stroke-width="2"><circle cx="17" cy="17" r="15"/><path d="M5 20c4-3 8-3 12 0s8 3 12 0M7 25c3-2 7-2 10 0s7 2 10 0"/></svg>Тихая бухта</span>
+ <nav><a href="#services">Массаж</a><a href="#gift">Сертификаты</a><a href="#contacts">Контакты</a></nav>
+</div>
+<div class="hero">
+ <div class="sun"></div>
+ <svg class="waves" viewBox="0 0 1200 200" preserveAspectRatio="none"><path d="M0 80 C200 40 400 120 600 80 S1000 40 1200 80 V200 H0Z" fill="rgba(255,255,255,.12)"/><path d="M0 120 C200 90 400 150 600 120 S1000 90 1200 120 V200 H0Z" fill="rgba(255,255,255,.12)"/></svg>
+ <div class="in">
+  <span class="pill">Массаж и SPA-ритуалы у моря</span>
+  <h1>Час, когда можно <i>ни о чём не думать</i></h1>
+  <p>Классический, расслабляющий и лимфодренажный массаж. Сертифицированные массажисты, тёплые масла, тишина.</p>
+  <div class="actions"><button class="btn light" data-book>Записаться на сеанс</button><a class="btn" href="#services" style="background:rgba(255,255,255,.18)">Выбрать массаж</a></div>
+ </div>
+</div>
+</div>
+
+<section id="services"><div class="wrap">
+ <div class="center"><span class="tag">Программы</span><h2>Выберите массаж</h2><p>Нажмите на программу — откроется онлайн-запись с выбором массажиста и времени.</p></div>
+ <div class="grid">
+  <div class="s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 14c4-6 12-6 16 0"/><circle cx="12" cy="7" r="3"/></svg></div><h3>Классический</h3><p>Снимает напряжение в спине и шее после рабочего дня.</p><div class="meta"><b>2 500 ₽</b><span>60 мин</span></div><button class="btn" data-book="Классический массаж · 60 мин|2 500 ₽">Записаться</button></div>
+  <div class="s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 3c3 4 5 7 5 10a5 5 0 0 1-10 0c0-3 2-6 5-10z"/></svg></div><h3>Лимфодренажный</h3><p>Уходит отёчность, лёгкость в ногах. Курс от 5 сеансов.</p><div class="meta"><b>2 800 ₽</b><span>60 мин</span></div><button class="btn" data-book="Лимфодренажный массаж|2 800 ₽">Записаться</button></div>
+  <div class="s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg></div><h3>Релакс со стоунами</h3><p>Тёплые камни и ароматерапия. Глубокое расслабление.</p><div class="meta"><b>3 500 ₽</b><span>90 мин</span></div><button class="btn" data-book="Релакс со стоунами · 90 мин|3 500 ₽">Записаться</button></div>
+  <div class="s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M8 3v18M16 3v18M8 8h8M8 16h8"/></svg></div><h3>Шейно-воротниковая зона</h3><p>Для тех, кто много сидит за компьютером.</p><div class="meta"><b>1 300 ₽</b><span>30 мин</span></div><button class="btn" data-book="Массаж шейно-воротниковой зоны|1 300 ₽">Записаться</button></div>
+  <div class="s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="9" r="6"/><path d="M9 21h6M12 15v6"/></svg></div><h3>Массаж лица</h3><p>Буккальная и скульптурная техника, лифтинг-эффект.</p><div class="meta"><b>2 200 ₽</b><span>45 мин</span></div><button class="btn" data-book="Массаж лица|2 200 ₽">Записаться</button></div>
+  <div class="s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M3 20c0-4 2-6 5-6s5 2 5 6M11 20c0-4 2-6 5-6s5 2 5 6"/></svg></div><h3>SPA для двоих</h3><p>Парный ритуал: массаж, чай и время вдвоём.</p><div class="meta"><b>6 500 ₽</b><span>120 мин</span></div><button class="btn" data-book="SPA для двоих · 120 мин|6 500 ₽">Записаться</button></div>
+ </div>
+</div></section>
+
+<section id="gift" style="padding-top:0"><div class="wrap certs">
+ <div class="cert"><span class="tag" style="color:#cfe7df">Подарок</span><h3>Сертификат на массаж</h3><p>На любую сумму или программу. Действует 6 месяцев — получатель сам выбирает время онлайн.</p><button class="btn light" data-book="Подарочный сертификат|от 2 500 ₽">Оформить сертификат</button></div>
+ <div class="steps">
+  <div><b>1</b><div><h4>Выберите программу</h4><p>или «любая» — подскажем на месте</p></div></div>
+  <div><b>2</b><div><h4>Укажите время и массажиста</h4><p>видно реальное расписание</p></div></div>
+  <div><b>3</b><div><h4>Получите напоминание</h4><p>за день до визита</p></div></div>
+ </div>
+</div></section>
+
+<footer id="contacts"><div class="wrap"><div class="foot">
+ <div><b>Адрес</b>Набережная Примерная, 3</div><div><b>Работаем</b>Ежедневно 9:00–21:00</div><div><b>Связь</b>+7 (900) 000-00-00</div>
+</div></div></footer>
+<script>
+/* =========================================================
+   Онлайн-запись через DIKIDI — общий модуль для всех сайтов
+   ---------------------------------------------------------
+   КАК ПОДКЛЮЧИТЬ РЕАЛЬНОГО МАСТЕРА:
+   1. DIKIDI Business (веб-версия) → Настройки → Онлайн-запись →
+      Виджет для сайта → «Создать кнопку онлайн-записи».
+   2. Выберите тип кнопки (общая запись / к мастеру / на услугу),
+      нажмите «Сгенерировать код» и скопируйте из него ССЫЛКУ
+      вида https://dikidi.net/XXXXXX?...
+   3. Вставьте ссылку в атрибут data-dikidi у тега <body>.
+   Готово: все кнопки [data-book] на странице ведут в запись.
+
+   Вариант 2: вставить официальный код кнопки DIKIDI целиком
+   (кнопка + скрипты, которые выдаёт сервис) — тогда этот файл
+   можно не подключать.
+   ========================================================= */
+(function () {
+  var body = document.body;
+  var url = body.getAttribute('data-dikidi') || 'https://dikidi.net/';
+  var studio = body.getAttribute('data-studio') || '';
+
+  var css = '' +
+    '.dk-overlay{position:fixed;inset:0;background:rgba(10,10,12,.55);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:999;padding:20px}' +
+    '.dk-overlay.open{display:flex;animation:dkFade .2s ease}' +
+    '@keyframes dkFade{from{opacity:0}to{opacity:1}}' +
+    '.dk-modal{background:var(--card,#fff);color:var(--text,#222);width:100%;max-width:420px;border-radius:var(--radius,18px);padding:28px;box-shadow:0 30px 80px rgba(0,0,0,.35);position:relative;font-family:inherit}' +
+    '.dk-close{position:absolute;top:12px;right:14px;border:0;background:none;font-size:26px;line-height:1;cursor:pointer;color:inherit;opacity:.6}' +
+    '.dk-tag{display:inline-block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.65;margin-bottom:6px}' +
+    '.dk-title{font-size:22px;margin:0 0 4px;font-family:var(--display,inherit)}' +
+    '.dk-service{margin:14px 0 18px;padding:14px 16px;border-radius:12px;background:var(--soft,#f3f3f3);display:flex;justify-content:space-between;gap:12px;font-weight:600}' +
+    '.dk-steps{list-style:none;padding:0;margin:0 0 20px;display:grid;gap:10px;font-size:14px}' +
+    '.dk-steps li{display:flex;gap:10px;align-items:center}' +
+    '.dk-steps b{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--accent,#333);color:var(--on-accent,#fff);font-size:12px}' +
+    '.dk-go{display:block;text-align:center;text-decoration:none;padding:15px;border-radius:var(--btn-radius,12px);background:var(--accent,#333);color:var(--on-accent,#fff);font-weight:700}' +
+    '.dk-go:hover{filter:brightness(1.08)}' +
+    '.dk-note{font-size:12px;opacity:.6;margin:12px 0 0;text-align:center}' +
+    '.dk-fab{position:fixed;right:18px;bottom:18px;z-index:50;border:0;cursor:pointer;padding:15px 22px;border-radius:999px;background:var(--accent,#333);color:var(--on-accent,#fff);font:700 15px/1 inherit;font-family:inherit;box-shadow:0 12px 30px rgba(0,0,0,.25);display:flex;gap:8px;align-items:center}' +
+    '.dk-fab svg{width:18px;height:18px}' +
+    '@media(min-width:900px){.dk-fab{display:none}}';
+  var st = document.createElement('style');
+  st.textContent = css;
+  document.head.appendChild(st);
+
+  var ov = document.createElement('div');
+  ov.className = 'dk-overlay';
+  ov.innerHTML =
+    '<div class="dk-modal" role="dialog" aria-modal="true" aria-labelledby="dkT">' +
+    '<button class="dk-close" aria-label="Закрыть">&times;</button>' +
+    '<span class="dk-tag">Онлайн-запись · DIKIDI</span>' +
+    '<h3 class="dk-title" id="dkT">' + (studio ? 'Запись в ' + studio : 'Онлайн-запись') + '</h3>' +
+    '<div class="dk-service"><span class="dk-s-name">Любая услуга</span><span class="dk-s-price"></span></div>' +
+    '<ol class="dk-steps">' +
+    '<li><b>1</b>Выберите мастера и свободное время</li>' +
+    '<li><b>2</b>Подтвердите номер телефона</li>' +
+    '<li><b>3</b>Получите напоминание перед визитом</li>' +
+    '</ol>' +
+    '<a class="dk-go" target="_blank" rel="noopener">Выбрать время</a>' +
+    '<p class="dk-note">Запись круглосуточно, без звонков. Перенести или отменить можно в приложении DIKIDI.</p>' +
+    '</div>';
+  body.appendChild(ov);
+  ov.querySelector('.dk-go').href = url;
+
+  var fab = document.createElement('button');
+  fab.className = 'dk-fab';
+  fab.setAttribute('data-book', '');
+  fab.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Записаться';
+  body.appendChild(fab);
+
+  function open(data) {
+    var parts = (data || '').split('|');
+    ov.querySelector('.dk-s-name').textContent = parts[0] || 'Любая услуга';
+    ov.querySelector('.dk-s-price').textContent = parts[1] || '';
+    ov.classList.add('open');
+    ov.querySelector('.dk-go').focus();
+  }
+  function close() { ov.classList.remove('open'); }
+
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-book]');
+    if (b) { e.preventDefault(); open(b.getAttribute('data-book')); return; }
+    if (e.target === ov || e.target.closest('.dk-close')) close();
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+})();
+
+</script>
+</body>
+</html>
